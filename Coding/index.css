@@ -1,0 +1,25 @@
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.textBlack {
+    color: black;
+    font-weight: bold;
+}
+
+#span-1{
+    color: rgb(255, 44, 7);
+}
+
+.btn{
+    background-color: blue;
+    padding: 5px;
+    color: white;
+    margin-top: 10px;
+    margin-left: 50vw;
+    cursor: pointer;
+}
