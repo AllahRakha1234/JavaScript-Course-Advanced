@@ -64,6 +64,8 @@
 
 // ---------------------- Currying ( Application of Clousures ) -----------------------
 
+// // ====> Currying means: Converting a function that takes multiple arguments into a sequence of functions that each take one argument.
+
 // function z(a) {
 //   return function y(b) {
 //     return function x(c) {
@@ -74,11 +76,11 @@
 
 // const z = (a) => (b) => (c) => a + b + c;
 
-// const step1 = z(10);
-// console.log("🚀 ~ step1:", step1)
-// const step2 = step1(20);
+// const step1 = z(10);        // Here step1 remembers a = 10
+// console.log("🚀 ~ step1:", step1)  
+// const step2 = step1(20);    // Here step2 remembers a = 10, b = 20
 // console.log("🚀 ~ step2:", step2)
-// const step3 = step2(30);
+// const step3 = step2(30);    // Here step2 remembers a = 10, b = 20, c = 30
 // console.log("Result: ", step3);
 
 // ---------------------- Call, Apply, Bind Method ( Function Borrowing) -----------------------
@@ -98,7 +100,8 @@
 
 // // user.printName.call(user1);  // Passing the reference of user1 object to printName function of user object
 
-// // We can define the function separtely as well and take the arguments. First argument will be the reference of the object and then we can pass the other arguments as well.
+// // =======> We can define the function separtely as well and take the arguments. First argument will be the reference of the object and then we can pass the other arguments as well.
+
 // const printFullNameFn = function (city, province) {
 //   console.log(`I am ${this.fname} ${this.lname}. I live in ${city}, ${province}.`);
 // }
@@ -107,7 +110,22 @@
 // printFullNameFn.call(user1, "Lahore", "Punjab");
 // printFullNameFn.apply(user, ["Karachi", "Sindh"]);
 // printFullNameFn.apply(user1, ["Lahore", "Punjab"]);
-// // Bind method returns a new function with the reference of the object passed as first argument. We can call that function later on.
+
+// // =======> Bind method returns a new function with the reference of the object passed as first argument permanently ( or with a permanently fixed this value ). We can call that function later on.
+
 // const printFullNameBind = printFullNameFn.bind(user, "Karachi", "Sindh");
 // console.log("🚀 ~ printFullNameBind:", printFullNameBind);
 // printFullNameBind();
+
+// const multiply = (a, b) => {
+//   console.log("this: ", this);
+//   console.log("a: ", a);
+//   console.log("b: ", b);
+//   return a * b;
+// };
+// const multiplyByFive = multiply.bind(null, 5); // Here this = null, a = 5 and b will be the passed argument
+// console.log("🚀 ~ multiplyByFive result:", multiplyByFive(10));
+// const multiplyByTen = multiply.bind(this, 10); // Here this = this, a = 10 and b will be the passed argument
+// const multiplyByTenAllArg = multiply.bind(this, 10, 100); // Here this = this, a = 10 and b = 100
+// console.log("🚀 ~ multiplyByTen result:", multiplyByTen(7));
+// console.log("🚀 ~ multiplyByTenAllArg result:", multiplyByTenAllArg(7));
