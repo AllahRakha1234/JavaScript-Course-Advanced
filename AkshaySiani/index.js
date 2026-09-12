@@ -155,3 +155,56 @@
 // const multiplyByTenAllArg = multiply.bind(this, 10, 100); // Here this = this, a = 10 and b = 100
 // console.log("🚀 ~ multiplyByTen result:", multiplyByTen(7));
 // console.log("🚀 ~ multiplyByTenAllArg result:", multiplyByTenAllArg(7));
+
+// ---------------------- First Class Function -----------------------
+// ===> First Class Function means treating functions as first class citizens. In JavaScript, functions are treated as first class citizens. It means that functions can be assigned to variables, passed as arguments to other functions, and returned from other functions.
+
+// ===> Function Statement aka Function Declaration
+// function greet() {
+//   console.log("Hello World")
+// }
+// greet();
+// ===> Function Expression
+// let greet1 = function () {
+//   console.log("Hello World 1")
+// }
+// greet1();
+
+// ===> Anonymous Function
+// function () {
+//   console.log("Hello World")
+// }
+
+// ===> Named Function Expression ( Useful when needed to be called inside itself => Recursion )
+// let greet1 = function greet() {
+//   console.log("Named Function Expression")
+//   console.log("Greet: ", greet)
+// }
+// greet();// Can't do it.greet is name of the function expression itself, not a variable declared in the surrounding scope.
+// greet1();
+// let countDown = function count(n) {
+//   if (n === 0) return;
+//   console.log("Before:", n);
+//   count(n - 1);
+//   console.log("After:", n);
+// };
+// countDown(5);
+
+// ===> Difference btw Parameter & Argument ( Parameters are placeholders and arguments are the actual values passed )
+// const addFunc = function (a, b) { // a, b parameters
+//   console.log("Sum: ", a + b);
+// };
+// addFunc(2, 3);  // 2,3 arguments
+
+// ===> First Class Function
+// const x = function (y) {
+//   console.log("Starting Passed Function Invoking.");
+//   y();
+//   return function () {
+//     console.log("Execution completed.")
+//   }
+// }
+// const greet = function () {
+//   console.log("Hello");
+// }
+// x(greet)(); // Here x(greet) will return a function and then we are invoking that returned function with ().
