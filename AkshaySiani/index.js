@@ -62,6 +62,32 @@
 // const agePrint = x();
 // agePrint();
 
+// ---------------------- setTimeout ( Clousures ) -----------------------
+// console.log("Start");
+// function x() {
+//   const age = 12;
+//   // for (let i = 1; i <= 5; i++) {
+//   for (var i = 1; i <= 5; i++) {
+//     setTimeout(function () {
+//       console.log("Age", age);
+//       console.log("I: ", i);
+//     }, 2000);
+//   }
+// };
+// x();
+// console.log("End");
+
+// function y() {
+//   for (var i = 1; i <= 5; i++) {
+//     function close(x) {
+//       setTimeout(function () {
+//         console.log("X: ", x);
+//       }, 1000);
+//     }
+//     close(i);
+//   }
+// };
+// y();
 // ---------------------- Currying ( Application of Clousures ) -----------------------
 
 // // ====> Currying means: Converting a function that takes multiple arguments into a sequence of functions that each take one argument.
