@@ -88,6 +88,13 @@
 //   }
 // };
 // y();
+
+// let msgEvent = setTimeout(() => {
+//   document.write("Hi, I am written by a set timeout event.")
+// }, 2000);
+// console.log("msgEvent: ", msgEvent);
+// clearTimeout(msgEvent);
+
 // ---------------------- Currying ( Application of Clousures ) -----------------------
 
 // // ====> Currying means: Converting a function that takes multiple arguments into a sequence of functions that each take one argument.
@@ -208,3 +215,4 @@
 //   console.log("Hello");
 // }
 // x(greet)(); // Here x(greet) will return a function and then we are invoking that returned function with ().
+
