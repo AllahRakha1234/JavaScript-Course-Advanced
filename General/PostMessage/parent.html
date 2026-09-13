@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Parent</title>
+</head>
+
+<body>
+
+  <div style="margin-bottom: 10px">
+    <h1>Parent</h1>
+    <button id="sendMessage">
+      Send Message
+    </button>
+  </div>
+
+  <iframe id="myFrame" src="iframe.html" width="500" height="300">
+  </iframe>
+
+  <script>
+
+    // Think of postMessage() as one window sending a message to another window. The direction depends entirely on which window calls postMessage().
+    const iframe = document.getElementById("myFrame");
+    const button = document.getElementById("sendMessage");
+
+    console.log("Parent JavaScript executed");
+
+    button.addEventListener("click", () => {
+
+      console.log("BUTTON CLICKED");
+
+      iframe.contentWindow.postMessage(
+        {
+          type: "GREETING",
+          message: "Hello from Parent"
+        },
+        "*" // target origin
+      );
+
+    });
+
+    window.addEventListener("message", (event) => {
+      if (event.source !== iframe.contentWindow) {
+        return;
+      }
+      console.log("PARENT RECEIVED RESPONSE FROM IFRAME");
+      console.log("event.data: ", event.data);
+
+    });
+  </script>
+
+</body>
+
+</html>

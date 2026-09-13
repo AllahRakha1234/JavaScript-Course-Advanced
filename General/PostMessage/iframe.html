@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Iframe</title>
+</head>
+
+<body>
+
+  <div>
+    <h1>Iframe</h1>
+    <button id="sendToParent">
+      Send Message To Parent
+    </button>
+  </div>
+
+
+  <script>
+
+    console.log("Iframe JavaScript executed");
+
+    // ==> Receiving Message from Parent
+    window.addEventListener("message", (event) => {
+      console.log("IFRAME RECEIVED MESSAGE FROM PARENT");
+      console.log("event.data: ", event.data);
+      console.log("event.source: ", event.source);
+      console.log("event.origin: ", event.origin);
+      // Send response back to Parent
+      event.source.postMessage(
+        {
+          type: "RESPONSE",
+          message: "Hello from Iframe!"
+        },
+        "*"
+      );
+    });
+    // ==> Sending Message to Parent (window.parent means: Give me the window that contains me.) (Every iframe has its own window.)
+    const button = document.getElementById("sendToParent");
+    button.addEventListener("click", () => {
+      console.log("IFRAME BUTTON CLICKED");
+      window.parent.postMessage(
+        {
+          type: "Greet",
+          message: "Hello from Iframe"
+        },
+        "*"
+      );
+    });
+
+  </script>
+
+</body>
+
+</html>
