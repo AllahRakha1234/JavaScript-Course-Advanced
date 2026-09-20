@@ -445,3 +445,90 @@
 // console.log("Area of Circles: ", calculate(radiusArray, circleCircumference));
 // console.log("Area of Circles: ", calculate(radiusArray, circleDiameter));
 
+// const circleArea = (r) => Math.PI * r * r;
+// Array.prototype.calculate = function (logic) { // This thing works for function syntax not on arrow.
+//   console.log(this)
+//   let output = [];
+//   for (let i = 0; i < this.length; i++) {
+//     output[i] = logic(this[i]);
+//   }
+//   return output
+// }
+// const radiusArray = [1, 2, 3, 4, 5];
+// console.log("Area of Circles: ", radiusArray.calculate(circleArea)); // Making custom function treat as map. 
+
+// ----------- Map, Filter, Reduce ( Array Methods ) ( We can CHAINED these functions) -----------------
+
+// ===> MAP (It is a High Order Function, returns a new array. Executes the passed function on each element of array)
+
+// const double = (x) => {
+//   return x * 2;
+// }
+// const numbers = [1, 2, 3, 4, 5];
+// const output1 = numbers.map(double);
+// console.log("🚀 ~ output1:", output1)
+// const output2 = numbers.map(function (x) {
+//   return x * 2;
+// });
+// console.log("🚀 ~ output2:", output2);
+// const output3 = numbers.map(x => { return x * 2 });
+// console.log("🚀 ~ output3:", output3)
+// const output4 = numbers.map(x => x * 2);
+// console.log("🚀 ~ output4:", output4);
+
+// ===> FILTER (It is used to filter values based on the defined condition)
+// const isEven = (x) => x % 2 === 0;
+// const numbers = [1, 2, 3, 4, 5];
+// let output = numbers.filter(isEven);
+// console.log("🚀 ~ output:", output);
+
+// ===> REDUCE (It is used when we want to come up with a single value after operating array)
+// const numbers = [1, 2, 3, 4, 5];
+// const largest = numbers.reduce((num, curr) => {
+//   if (curr > num) num = curr;
+//   return num;
+// }, 0);
+// console.log("🚀 ~ largest:", largest);
+// const sum = numbers.reduce((sum, curr) => {
+//   sum += curr;
+//   return sum;
+// }, 0);
+// console.log("🚀 ~ sum:", sum);
+
+// ===> Real World Examples
+const users = [
+  { firstName: "akshay", lastName: "saini", age: 26 },
+  { firstName: "donald", lastName: "trump", age: 75 },
+  { firstName: "elon", lastName: "musk", age: 50 },
+  { firstName: "deepika", lastName: "padukone", age: 26 }
+];
+
+// const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+// const fullNameArray = users.map(
+//   user => `${capitalize(user.firstName)} ${user.lastName}`
+// );
+// console.log(fullNameArray);
+
+// const agesGroups = users.reduce((acc, curr) => {
+//   // if (Object.keys(acc).includes(String(curr["age"]))) { // OR below IF condition
+//   if (acc[curr.age]) {
+//     acc[curr.age] += 1;
+//   } else {
+//     acc[curr.age] = 1;
+//   };
+//   return acc;
+// }, {}); 
+// console.log("🚀 ~ agesGroups:", agesGroups)
+// const agesGroups = users.reduce((acc, curr) => { // EVEN More Cleaner Form
+//   acc[curr.age] = (acc[curr.age] ?? 0) + 1;
+//   return acc;
+// }, {});
+// console.log("🚀 ~ agesGroups:", agesGroups)
+
+// const firstNameArray = users.filter((user) => user.age > 30).map((user) => user.firstName)
+// console.log("🚀 ~ firstNameArray:", firstNameArray)
+// const firstNameArray = users.reduce((acc, curr) => { // Above result using REDUCE Method
+//   if (curr.age > 30) acc.push(curr.firstName);
+//   return acc;
+// }, [])
+// console.log("🚀 ~ firstNameArray:", firstNameArray)
