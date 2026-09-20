@@ -415,3 +415,33 @@
 //   console.log("I: ", i)
 // };
 // console.log("End");
+
+// ---------------------- JS Engine - V8 Architecture -----------------------
+// ===> To run JS code, we need JS Runtime Environment ( as in Nodejs ) ( Like console, setTimeout is available in Browswer as well as in JS Runtime but localStorage is available in Browser Only )
+// ===> In V8, Turbofan is COMPILER and IGNITION is Interpreter
+// ===> Parser (Tokenization) -> Compilation (AST Tree) -> Execution ( Call Stack and Heap Memory)
+// ===> JS is JIT ( Just in time compilation => It is interpreter and during run time it compiles to optimize)
+// ===> 
+// ===> Google use V8 engine for JS. Firefox use SpiderMonkey
+
+// ---------------------- High Order Functions -----------------------
+// ===> Function that takes function as an argument, or returns a function is high order function. The function passed as an argument is the CALLBACK function.
+
+// const circleArea = (r) => Math.PI * r * r;
+// const circleCircumference = (r) => 2 * Math.PI * r;
+// const circleDiameter = (r) => 2 * r;
+
+
+// const calculate = (arr, logic) => {
+//   let output = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     output[i] = logic(arr[i]);
+//   }
+//   return output
+// }
+
+// const radiusArray = [1, 2, 3, 4, 5];
+// console.log("Area of Circles: ", calculate(radiusArray, circleArea));
+// console.log("Area of Circles: ", calculate(radiusArray, circleCircumference));
+// console.log("Area of Circles: ", calculate(radiusArray, circleDiameter));
+
