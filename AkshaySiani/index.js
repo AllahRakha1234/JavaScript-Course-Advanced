@@ -496,12 +496,12 @@
 // console.log("🚀 ~ sum:", sum);
 
 // ===> Real World Examples
-const users = [
-  { firstName: "akshay", lastName: "saini", age: 26 },
-  { firstName: "donald", lastName: "trump", age: 75 },
-  { firstName: "elon", lastName: "musk", age: 50 },
-  { firstName: "deepika", lastName: "padukone", age: 26 }
-];
+// const users = [
+//   { firstName: "akshay", lastName: "saini", age: 26 },
+//   { firstName: "donald", lastName: "trump", age: 75 },
+//   { firstName: "elon", lastName: "musk", age: 50 },
+//   { firstName: "deepika", lastName: "padukone", age: 26 }
+// ];
 
 // const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 // const fullNameArray = users.map(
@@ -532,3 +532,56 @@ const users = [
 //   return acc;
 // }, [])
 // console.log("🚀 ~ firstNameArray:", firstNameArray)
+
+// ---------------------- Callback Hell -----------------------
+// ===> IMPORTANCE: Allows Async Code to Execute
+// ===> DRAWBACKS: 1) Callback Hell ( Pyramid of Dome ) , 2) Inversion of Control ( Control is given to functions )
+// let cart = ["shoes", "pants", "shirts"];
+// api.createOrder();
+// api.createPayment();
+// api.proceedPayment();
+// api.showSummary();
+// // ===> Now we'll to execute one after the other we need to pass them as a callback.
+// api.createOrder(cart, function () {
+//   api.createPayment(function () {
+//     api.proceedPayment(function () {
+//       api.showSummary();
+//     });
+//   });
+// });
+
+// ---------------------- Promises -----------------------
+// ===> Promises => is an object representing eventual completion or failure of an asynchronous operations.
+// ===> Promises => Containers for future values.
+// ===> Promises => Placedholders that will be filled later.
+// ===> Promises named as promises because it solves the previous "Inversion of Control" problem. It gives the "trust" that it will execute the "ATTACHED" function 100%. Previously, in Callback Hell, we were "passing" the functions and here we are "attaching". 
+
+// let cart = ["shoes", "pants", "shirts"];
+// api.createOrder(cart, function () {
+//   api.createPayment();
+// }); // Using Callbacks
+
+// let orderPromise = api.createOrder(cart);
+// orderPromise.then(function () { // Using Promises
+//   api.createPayment();
+// }).catch((error) => console.error(error));
+
+// const user = fetch("https://api.github.com/users/akshaymarch7")
+// console.log("🚀 ~ user:", user)
+// user.then(function (data) {
+//   console.log("🚀 ~ data:", data);
+// }).catch((error) => console.log("Error: ", error));
+
+// ===> Promises Chaining => We can chained the promises. Always remember to "Return" the promise while chaining
+// let cart = ["shoes", "pants", "shirts"];
+// api.createOrder(cart, function (orderId) {
+//   api.createPayment(orderId, function (paymentInfo) {
+//     api.showOrderSummary(paymentInfo, function (checkoutPayload) {
+//       api.proceedToPay(checkoutPayload);
+//     })
+//   })
+// })
+// api.createOrder(cart)
+//   .then(function (orderId) { return api.createPayment(orderId) })
+//   .then((paymentInfo) => { return api.showOrderSummary(paymentInfo) })
+//   .then(checkoutPayload => api.proceedToPay(checkoutPayload));
