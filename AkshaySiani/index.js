@@ -585,3 +585,31 @@
 //   .then(function (orderId) { return api.createPayment(orderId) })
 //   .then((paymentInfo) => { return api.showOrderSummary(paymentInfo) })
 //   .then(checkoutPayload => api.proceedToPay(checkoutPayload));
+
+// --------------------- Creating a Promise, Chaining & Error Handling ----------------------
+
+// let cart = ["shoes", "pants", "shirts"];
+
+// const validateCart = () => true;
+
+// function createOrder(cart) {
+//   const pr = new Promise(function (resolve, reject) {
+//     if (!validateCart(cart)) {
+//       reject(new Error("Cart is not valid."));
+//     }
+//     // DB / Business Logic
+//     const orderId = "12345";
+//     if (orderId) {
+//       setTimeout(() => {
+//         resolve({ orderId, message: "Order created Successfully." })
+//       }, 5000);
+//     }
+//   });
+//   return pr;
+// }
+
+// const promise = createOrder(cart);
+// console.log("🚀 ~ promise:", promise)
+// promise
+//   .then(result => console.log(result.message, " ", result.orderId))
+//   .catch(error => console.log(error))
